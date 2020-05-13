@@ -1,0 +1,65 @@
+{
+    "name": "lwc-module-loader-test",
+    "description": "My amazing LWC app",
+    "version": "0.0.1",
+    "author": "Aaron Wagoner",
+    "bugs": "https://github.com/Aaron Wagoner/lwc-module-loader-test/issues",
+    "dependencies": {
+        "compression": "^1.7.4",
+        "express": "^4.17.1",
+        "helmet": "^3.22.0",
+        "moment": "^2.25.3"
+    },
+    "devDependencies": {
+        "@types/jest": "^25.2.1",
+        "eslint": "^7.0.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.2",
+        "lwc-services": "/Users/awagoner/create-lwc-app/packages/lwc-services",
+        "prettier": "^2.0.5"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/Aaron Wagoner/lwc-module-loader-test",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "lint-staged": {
+        "**/*.{css,html,js,json,md,ts,yaml,yml}": [
+            "prettier --write"
+        ],
+        "./src/**/*.ts": [
+            "eslint"
+        ]
+    },
+    "lwc": {
+        "modules": [
+            {
+                "dir": "src/modules"
+            }
+        ]
+    },
+    "repository": "Aaron Wagoner/lwc-module-loader-test",
+    "scripts": {
+        "build": "lwc-services build -m production",
+        "build:development": "lwc-services build",
+        "lint": "eslint ./src/**/*.ts",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "serve": "node scripts/server.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "lwc-services watch"
+    }
+}
